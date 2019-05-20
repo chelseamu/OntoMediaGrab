@@ -55,3 +55,22 @@ javascript: (function() {
     document.execCommand('copy');
     document.body.removeChild(el);
 })();
+
+// 复制到Excel的bookmarklet
+javascript: (function() {
+    var list = $("#list_container .weui-desktop-mass-appmsg__title");
+    var resultText = "";
+    list.each(function(i) {
+        var cln = $(this).clone()
+            .children()
+            .remove()
+            .end();
+        resultText += cln.text().trim() + "\t" + cln.attr("href") + "\r";
+    });
+    const el = document.createElement('textarea');
+    el.value = resultText;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+})();
