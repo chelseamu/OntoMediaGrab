@@ -1,30 +1,41 @@
 // 下面这两个函数有时间可以做成浏览器插件……
-// 获取微信公众平台 “已群发消息” 当前页的文章标题及链接
-function getWechatMpPostTitleLink() {
-    var list = $("#list_container .weui-desktop-mass-appmsg__title");
+// 获取微信公众平台 “已群发消息” 当前页的文章信息
+function getWechatMpPostInfo() {
+    var list = $("#list_container .weui-desktop-mass__item");
     var result = [];
-    list.each(function(i) {
-        var cln = $(this).clone()
-            .children()
-            .remove()
-            .end();
-        var item = {
-            title: cln.text().trim(),
-            link: cln.attr("href")
-        }
-        result.push(item);
+    list.each(function (i) {
+        var pubDateElement = $(this).find(".weui-desktop-mass__time");
+        var pubDate = pubDateElement.text().trim();
+
+        var articleElements = $(this).find(".weui-desktop-mass-appmsg__bd");
+        articleElements.each(function (j) {
+            var linkElement = $(this).find(".weui-desktop-mass-appmsg__title");
+            var cln = linkElement.clone().children().remove().end();
+            var readCountElement = $(this).find('.appmsg-view');
+            var readCount = readCountElement.text().trim();
+
+            var item = {
+                pubDate: pubDate,
+                title: cln.text().trim(),
+                link: cln.attr("href"),
+                readCount: readCount
+            };
+            result.push(item);
+        });
     });
     return result;
 }
 
 // 将当前页结果复制到剪切板
-function copyWechatMpPostTitleLinkResult() {
-    var resultObj = getWechatMpPostTitleLink();
+function copyWechatMpPostInfoResult() {
+    var resultObj = getWechatMpPostInfo();
     if (resultObj) {
         var resultText = "";
-        $.each(resultObj, function(i) {
-            resultText += resultObj[i].title + "\n";
-            resultText += resultObj[i].link + "\n\r";
+        $.each(resultObj, function (i) {
+            resultText += resultObj[i].pubDate + "\t";
+            resultText += resultObj[i].title + "\t";
+            resultText += resultObj[i].link + "\t";
+            resultText += resultObj[i].readCount + "\r";
         });
 
         const el = document.createElement('textarea');
@@ -36,37 +47,38 @@ function copyWechatMpPostTitleLinkResult() {
     }
 }
 
-// 现在用 bookmarklet 最方便，把下面的代码添加到书签栏即可
-javascript: (function() {
-    var list = $("#list_container .weui-desktop-mass-appmsg__title");
-    var resultText = "";
-    list.each(function(i) {
-        var cln = $(this).clone()
-            .children()
-            .remove()
-            .end();
-        resultText += cln.text().trim() + "\n";
-        resultText += cln.attr("href") + "\n\r";
-    });
-    const el = document.createElement('textarea');
-    el.value = resultText;
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
-})();
-
 // 复制到Excel的bookmarklet
-javascript: (function() {
-    var list = $("#list_container .weui-desktop-mass-appmsg__title");
-    var resultText = "";
-    list.each(function(i) {
-        var cln = $(this).clone()
-            .children()
-            .remove()
-            .end();
-        resultText += cln.text().trim() + "\t" + cln.attr("href") + "\r";
+javascript: (function () {
+    var list = $("#list_container .weui-desktop-mass__item");
+    var result = [];
+    list.each(function (i) {
+        var pubDateElement = $(this).find(".weui-desktop-mass__time");
+        var pubDate = pubDateElement.text().trim();
+
+        var articleElements = $(this).find(".weui-desktop-mass-appmsg__bd");
+        articleElements.each(function (j) {
+            var linkElement = $(this).find(".weui-desktop-mass-appmsg__title");
+            var cln = linkElement.clone().children().remove().end();
+            var readCountElement = $(this).find('.appmsg-view');
+            var readCount = readCountElement.text().trim();
+
+            var item = {
+                pubDate: pubDate,
+                title: cln.text().trim(),
+                link: cln.attr("href"),
+                readCount: readCount
+            };
+            result.push(item);
+        });
     });
+    var resultText = "";
+    $.each(result, function (i) {
+        resultText += result[i].pubDate + "\t";
+        resultText += result[i].title + "\t";
+        resultText += result[i].link + "\t";
+        resultText += result[i].readCount + "\r";
+    });
+
     const el = document.createElement('textarea');
     el.value = resultText;
     document.body.appendChild(el);
