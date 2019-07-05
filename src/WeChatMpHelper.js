@@ -10,14 +10,13 @@ function getWechatMpPostInfo() {
         var articleElements = $(this).find(".weui-desktop-mass-appmsg__bd");
         articleElements.each(function (j) {
             var linkElement = $(this).find(".weui-desktop-mass-appmsg__title");
-            var cln = linkElement.clone().children().remove().end();
             var readCountElement = $(this).find('.appmsg-view');
             var readCount = readCountElement.text().trim();
 
             var item = {
                 pubDate: pubDate,
-                title: cln.text().trim(),
-                link: cln.attr("href"),
+                title: linkElement.find("span").text(),
+                link: linkElement.attr("href"),
                 readCount: readCount
             };
             result.push(item);
@@ -58,19 +57,19 @@ javascript: (function () {
         var articleElements = $(this).find(".weui-desktop-mass-appmsg__bd");
         articleElements.each(function (j) {
             var linkElement = $(this).find(".weui-desktop-mass-appmsg__title");
-            var cln = linkElement.clone().children().remove().end();
             var readCountElement = $(this).find('.appmsg-view');
             var readCount = readCountElement.text().trim();
 
             var item = {
                 pubDate: pubDate,
-                title: cln.text().trim(),
-                link: cln.attr("href"),
+                title: linkElement.find("span").text(),
+                link: linkElement.attr("href"),
                 readCount: readCount
             };
             result.push(item);
         });
     });
+
     var resultText = "";
     $.each(result, function (i) {
         resultText += result[i].pubDate + "\t";
