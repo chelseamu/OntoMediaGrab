@@ -31,7 +31,10 @@ javascript: (function() {
     $.each(result, function(i) {
         resultText += result[i].pubDate + "\t";
         resultText += result[i].title + "\t";
-        resultText += result[i].link + "\r";
+        resultText += result[i].link + "\t";
+        resultText += result[i].daShang + "\t";
+        resultText += result[i].like + "\t";
+        resultText += result[i].comments + "\r";
     });
 
     const el = document.createElement('textarea');
