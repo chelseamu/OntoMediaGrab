@@ -8,7 +8,7 @@ javascript: (function() {
         var pubDate = pubDateElement.text().trim();
         var linkElement = $(this).find("h4").find("a");
         var cln = linkElement.clone().children().remove().end();
-        var readCountElement = $(this).find('.num');
+        var readCountElement = $(this).find('.num').first();
         var readCount = readCountElement.text().trim();
 
         var item = {
