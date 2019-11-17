@@ -15,5 +15,5 @@ CSDN | https://blog.csdn.net/ontologycoding | CSDN.js | No | 2019.11
 金色 | https://www.jinse.com/member/186302 | jinse.js | Yes | 2019.11
 币快报 | https://www.beekuaibao.com/homepage/476512660095344640 | beekuaibao.js | Yes | 2019.11
 链节点 | https://www.chainnode.com/forum/188 | chinanode.js | Yes | 2019.11
-币看 | https://bitkan.com/zh/user/6452321/blog | N/A | N/A | N/A
+币看 | https://bitkan.com/zh/user/6452321/blog | bitkan.js | No | 2019.11
 币乎 | https://bihu.com/people/1090129 | bihu.js | Yes | 2019.11
