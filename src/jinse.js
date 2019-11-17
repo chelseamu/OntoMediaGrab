@@ -2,13 +2,13 @@
 // Require insert jQuery first
 
 javascript: (function() {
-    var list = $(".clear.list");
+    var list = $("ol.clear");
     var result = [];
     list.each(function(i) {
         var pubDateElement = $(this).find(".article-info > span").first();
         var pubDate = pubDateElement.text().trim();
 
-        var readCountElement = $(this).find('.js-article-num');
+        var readCountElement = $(this).find('.article-info span').last();
         var readCount = readCountElement.text().trim();
 
         var titleElement = $(this).find("h3 a");
