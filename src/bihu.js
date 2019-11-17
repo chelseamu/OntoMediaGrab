@@ -11,10 +11,18 @@ javascript: (function() {
         var titleElement = $(this).find(".content-info a").first();
         var title = titleElement.text().trim();
 
+        var extraInfoElements = $(this).find(".item-bottom").find("span");
+        var daShang = extraInfoElements[0].innerText;
+        var like = extraInfoElements[1].innerText;
+        var comments = extraInfoElements[2].innerText;
+
         var item = {
             pubDate: pubDate,
             title: title,
-            link: window.location.origin + titleElement.attr("href")
+            link: window.location.origin + titleElement.attr("href"),
+            daShang: daShang,
+            like: like,
+            comments: comments
         };
         result.push(item);
     });
