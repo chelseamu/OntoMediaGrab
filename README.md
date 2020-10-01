@@ -9,18 +9,18 @@ https://github.com/chelseamu/OntoMediaGrab/releases
 
 1. Import the HTML file into browser favourites.
 
-![image](https://mws.azureedge.net/assets/chrome-import-bookmark.png)
+![image](https://raw.githubusercontent.com/chelseamu/OntoMediaGrab/master/screenshots//chrome-import-bookmark.png)
 
-![image](https://mws.azureedge.net/assets/chrome-import-bookmark-2.png)
+![image](https://raw.githubusercontent.com/chelseamu/OntoMediaGrab/master/screenshots/chrome-import-bookmark-2.png)
 
 2. Open the Link and **wait until page fully loaded**.
 3. Click the saved bookmark, it will extract and copy the current content on the web page.
 
-![image](https://mws.azureedge.net/assets/csdn-copy.png)
+![image](https://raw.githubusercontent.com/chelseamu/OntoMediaGrab/master/screenshots/csdn-copy.png)
 
 4. Paste into Excel
 
-![image](https://mws.azureedge.net/assets/excel-paste.png)
+![image](https://raw.githubusercontent.com/chelseamu/OntoMediaGrab/master/screenshots/excel-paste.png)
 
 > If the link is marked with "jQuery Insert", please click "Insert-jQuery" first, and **!!!wait at least 5 seconds!!!** before click the other bookmark.
 
